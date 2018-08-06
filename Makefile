@@ -16,16 +16,17 @@ OPTIONS       = -std=c99 -pedantic -Wall -o
 OPTIONS_LIBS  = -std=c99 -pedantic -Wall -c
 
 
-all: GeneralHashFunctions.o HashTest
+OUT=GeneralHashFunctions.o HashTest
+all: $(OUT)
 
 GeneralHashFunctions.o: GeneralHashFunctions.c GeneralHashFunctions.h
 	$(COMPILER) $(OPTIONS_LIBS) GeneralHashFunctions.c
 
-HashTest: GeneralHashFunctions.c HashTest.c
+HashTest: GeneralHashFunctions.c HashTest.c GeneralHashFunctions.h
 	$(COMPILER) $(OPTIONS) HashTest HashTest.c GeneralHashFunctions.o
 
 clean:
-	rm -f core *.o *.bak *stackdump *#
+	rm -f $(OUT) core *.o *.bak *stackdump *#
 
 #
 # The End !
