@@ -106,12 +106,12 @@ unsigned long PJWHash64(const unsigned char* str, unsigned int len)
 #define THREE_QUARTERS  ((int) ((BITS_IN_int * 3) / 4))
 #define ONE_EIGHTH      ((int) (BITS_IN_int / 8))
 #define HIGH_BITS       ( ~((unsigned int)(~0) >> ONE_EIGHTH ))
-unsigned int HashPJW ( const unsigned char * datum )
+unsigned int HashPJW(const unsigned char* str)
 {
     unsigned int hash_value, i;
-    for ( hash_value = 0; *datum; ++datum )
+    for ( hash_value = 0; *str; ++str )
     {
-        hash_value = ( hash_value << ONE_EIGHTH ) + *datum;
+        hash_value = ( hash_value << ONE_EIGHTH ) + *str;
         if (( i = hash_value & HIGH_BITS ) != 0 )
             hash_value =
                 ( hash_value ^ ( i >> THREE_QUARTERS )) &
@@ -125,12 +125,12 @@ unsigned int HashPJW ( const unsigned char * datum )
 #define THREE_QUARTERS_LONG  ((int) ((BITS_IN_long * 3) / 4))
 #define ONE_EIGHTH_LONG      ((int) (BITS_IN_long / 8))
 #define HIGH_BITS_LONG       ( ~((unsigned long)(~0L) >> ONE_EIGHTH_LONG ))
-unsigned long HashPJW64 ( const unsigned char * datum )
+unsigned long HashPJW64(const unsigned char* str)
 {
     unsigned long hash_value, i;
-    for ( hash_value = 0; *datum; ++datum )
+    for ( hash_value = 0; *str; ++str )
     {
-        hash_value = ( hash_value << ONE_EIGHTH_LONG ) + *datum;
+        hash_value = ( hash_value << ONE_EIGHTH_LONG ) + *str;
         if (( i = hash_value & HIGH_BITS_LONG ) != 0 )
             hash_value =
                 ( hash_value ^ ( i >> THREE_QUARTERS_LONG )) &
