@@ -11,7 +11,7 @@
 #
 
 
-COMPILER      = -cc
+COMPILER      = cc
 OPTIONS       = -std=c99 -pedantic -Wall -o
 OPTIONS_LIBS  = -std=c99 -pedantic -Wall -c
 
