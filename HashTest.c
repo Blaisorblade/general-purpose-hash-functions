@@ -88,16 +88,24 @@ int main(int argc, char* argv[])
   test((const unsigned char []) {1, 1, 1, 1, 1, 1, 0}, 0x10101010101L);
   test((const unsigned char []) {1, 1, 1, 1, 1, 1, 1, 0}, 0x1010101010101L);
   test((const unsigned char []) {1, 1, 1, 1, 1, 1, 1, 1, 0}, 0x1010101010001L);
+
+  // Translating Scala
+  // testHash(0X1010101L, Array.fill(1024)(1))
   unsigned char inp[1025];
   inp[1024] = 0;
   for (int i = 0; i < 1024; i++) {
     inp[i] = 1;
   }
   test(inp, 0x1010101L);
+
+  // Translating Scala
+  // testHash(0xaafefeaaab54ffL, Array.tabulate(1024)(_.toByte))
+  unsigned char inp2[1025];
+  inp2[1024] = 0;
   for (int i = 0; i < 1024; i++) {
     inp[i] = (unsigned char)i;
   }
-  testWithLen(inp, 1024, 0x55aa01fe55ab54ffL);
+  testWithLen(inp, 1024, 0xaafefeaaab54ffL);
 
   return 0;
 }
