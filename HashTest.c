@@ -28,18 +28,21 @@ int main(int argc, char* argv[])
 
    printf("General Purpose Hash Function Algorithms Test\n");
    printf("By Arash Partow - 2002          \n"                 );
-   printf("Key:                          %s\n",key             );
-   printf(" 1. RS-Hash Function Value:   %u\n",RSHash  (key,36));
-   printf(" 2. JS-Hash Function Value:   %u\n",JSHash  (key,36));
-   printf(" 3. PJW-Hash Function Value:  %u\n",PJWHash (key,36));
-   printf(" 4. ELF-Hash Function Value:  %u\n",ELFHash (key,36));
-   printf(" 5. BKDR-Hash Function Value: %u\n",BKDRHash(key,36));
-   printf(" 6. SDBM-Hash Function Value: %u\n",SDBMHash(key,36));
-   printf(" 7. DJB-Hash Function Value:  %u\n",DJBHash (key,36));
-   printf(" 8. DEK-Hash Function Value:  %u\n",DEKHash (key,36));
-   printf(" 9. BP-Hash Function Value:   %u\n",BPHash  (key,36));
-   printf("10. FNV-Hash Function Value:  %u\n",FNVHash (key,36));
-   printf("11. AP-Hash Function Value:   %u\n",APHash  (key,36));
+   printf("Key:                           %s\n", key             );
+   printf(" 1. RS-Hash Function Value:    %x\n", RSHash   (key,36));
+   printf(" 2. JS-Hash Function Value:    %x\n", JSHash   (key,36));
+   printf(" 3. PJW-Hash Function Value:   %x\n", PJWHash  (key,36));
+   printf(" 3. PJW-Hash Function Value again:   %x\n", HashPJW (key));
+   printf(" 4. PJW64-Hash Function Value: %lx\n",PJWHash64(key,36));
+   printf(" 4. PJW64-Hash Function Value again:   %lx\n", HashPJW64(key));
+   printf(" 5. ELF-Hash Function Value:   %x\n", ELFHash  (key,36));
+   printf(" 6. BKDR-Hash Function Value:  %x\n", BKDRHash (key,36));
+   printf(" 7. SDBM-Hash Function Value:  %x\n", SDBMHash (key,36));
+   printf(" 8. DJB-Hash Function Value:   %x\n", DJBHash  (key,36));
+   printf(" 9. DEK-Hash Function Value:   %x\n", DEKHash  (key,36));
+   printf("10. BP-Hash Function Value:    %x\n", BPHash   (key,36));
+   printf("11. FNV-Hash Function Value:   %x\n", FNVHash  (key,36));
+   printf("12. AP-Hash Function Value:    %x\n", APHash   (key,36));
 
    return 1;
 }

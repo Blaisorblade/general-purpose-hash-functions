@@ -17,6 +17,7 @@
 
 
 #include "GeneralHashFunctions.h"
+#include <limits.h>
 
 
 unsigned int RSHash(const char* str, unsigned int len)
@@ -75,6 +76,68 @@ unsigned int PJWHash(const char* str, unsigned int len)
    return hash;
 }
 /* End Of  P. J. Weinberger Hash Function */
+
+// 64-bit variant of PJWHash
+unsigned long PJWHash64(const char* str, unsigned int len)
+{
+  const unsigned long BitsInUnsignedLong = (unsigned long)(sizeof(unsigned long) * 8);
+  const unsigned long ThreeQuarters      = (unsigned long)((BitsInUnsignedLong  * 3) / 4);
+  const unsigned long OneEighth          = (unsigned long)(BitsInUnsignedLong / 8);
+  const unsigned long HighBits           = (unsigned long)(0xFFFFFFFF) << (BitsInUnsignedLong - OneEighth);
+  unsigned long hash              = 0;
+  unsigned long test              = 0;
+  unsigned long i                 = 0;
+
+  for(i = 0; i < len; str++, i++)
+    {
+      hash = (hash << OneEighth) + (*str);
+
+      if((test = hash & HighBits) != 0)
+        {
+          hash = (( hash ^ (test >> ThreeQuarters)) & (~HighBits));
+        }
+    }
+
+  return hash;
+}
+
+// Alternative implementation from http://www.drdobbs.com/database/hashing-rehashed/184409859.
+#define BITS_IN_int     ( sizeof(int) * CHAR_BIT )
+#define THREE_QUARTERS  ((int) ((BITS_IN_int * 3) / 4))
+#define ONE_EIGHTH      ((int) (BITS_IN_int / 8))
+#define HIGH_BITS       ( ~((unsigned int)(~0) >> ONE_EIGHTH ))
+unsigned int HashPJW ( const char * datum )
+{
+    unsigned int hash_value, i;
+    for ( hash_value = 0; *datum; ++datum )
+    {
+        hash_value = ( hash_value << ONE_EIGHTH ) + *datum;
+        if (( i = hash_value & HIGH_BITS ) != 0 )
+            hash_value =
+                ( hash_value ^ ( i >> THREE_QUARTERS )) &
+                        ~HIGH_BITS;
+    }
+    return ( hash_value );
+}
+
+// 64-bit variant of HashPJW.
+#define BITS_IN_long     ( sizeof(long) * CHAR_BIT )
+#define THREE_QUARTERS_LONG  ((int) ((BITS_IN_long * 3) / 4))
+#define ONE_EIGHTH_LONG      ((int) (BITS_IN_long / 8))
+#define HIGH_BITS_LONG       ( ~((unsigned long)(~0L) >> ONE_EIGHTH_LONG ))
+unsigned long HashPJW64 ( const char * datum )
+{
+    unsigned long hash_value, i;
+    for ( hash_value = 0; *datum; ++datum )
+    {
+        hash_value = ( hash_value << ONE_EIGHTH_LONG ) + *datum;
+        if (( i = hash_value & HIGH_BITS_LONG ) != 0 )
+            hash_value =
+                ( hash_value ^ ( i >> THREE_QUARTERS_LONG )) &
+                        ~HIGH_BITS_LONG;
+    }
+    return ( hash_value );
+}
 
 
 unsigned int ELFHash(const char* str, unsigned int len)
