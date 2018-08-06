@@ -41,9 +41,9 @@ void testWithLen(const unsigned char *key, size_t len, ulong expected64)
   /* /\* printf(" 1. RS-Hash Function Value:    %x\n", RSHash   (key,len)); *\/ */
   /* /\* printf(" 2. JS-Hash Function Value:    %x\n", JSHash   (key,len)); *\/ */
   unsigned h1 = PJWHash  (key,len);
-  assert (h1 == HashPJW (key));
+  assert (h1 == HashPJW (key, len));
   unsigned long h2 = PJWHash64(key,len);
-  assert (h2 == HashPJW64(key));
+  assert (h2 == HashPJW64(key, len));
 
   printf(" 3. PJW-Hash Function Value:   %x\n", h1);
   printf(" 4. PJW64-Hash Function Value: %lx\n", h2);

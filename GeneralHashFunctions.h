@@ -39,7 +39,7 @@ unsigned int  BPHash   (const unsigned char* str, unsigned int len);
 unsigned int  FNVHash  (const unsigned char* str, unsigned int len);
 unsigned int  APHash   (const unsigned char* str, unsigned int len);
 
-unsigned int HashPJW ( const unsigned char * datum );
-unsigned long HashPJW64 ( const unsigned char * datum );
+unsigned int  HashPJW  (const unsigned char* str, unsigned int len);
+unsigned long HashPJW64(const unsigned char* str, unsigned int len);
 
 #endif
