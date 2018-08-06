@@ -23,23 +23,23 @@
 #include <stdio.h>
 
 
-typedef unsigned int (*hash_function)(char*, unsigned int len);
+typedef unsigned int (*hash_function)(const unsigned char*, unsigned int len);
 
 
-unsigned int  RSHash   (const char* str, unsigned int len);
-unsigned int  JSHash   (const char* str, unsigned int len);
-unsigned int  PJWHash  (const char* str, unsigned int len);
-unsigned long PJWHash64(const char* str, unsigned int len);
-unsigned int  ELFHash  (const char* str, unsigned int len);
-unsigned int  BKDRHash (const char* str, unsigned int len);
-unsigned int  SDBMHash (const char* str, unsigned int len);
-unsigned int  DJBHash  (const char* str, unsigned int len);
-unsigned int  DEKHash  (const char* str, unsigned int len);
-unsigned int  BPHash   (const char* str, unsigned int len);
-unsigned int  FNVHash  (const char* str, unsigned int len);
-unsigned int  APHash   (const char* str, unsigned int len);
+unsigned int  RSHash   (const unsigned char* str, unsigned int len);
+unsigned int  JSHash   (const unsigned char* str, unsigned int len);
+unsigned int  PJWHash  (const unsigned char* str, unsigned int len);
+unsigned long PJWHash64(const unsigned char* str, unsigned int len);
+unsigned int  ELFHash  (const unsigned char* str, unsigned int len);
+unsigned int  BKDRHash (const unsigned char* str, unsigned int len);
+unsigned int  SDBMHash (const unsigned char* str, unsigned int len);
+unsigned int  DJBHash  (const unsigned char* str, unsigned int len);
+unsigned int  DEKHash  (const unsigned char* str, unsigned int len);
+unsigned int  BPHash   (const unsigned char* str, unsigned int len);
+unsigned int  FNVHash  (const unsigned char* str, unsigned int len);
+unsigned int  APHash   (const unsigned char* str, unsigned int len);
 
-unsigned int HashPJW ( const char * datum );
-unsigned long HashPJW64 ( const char * datum );
+unsigned int HashPJW ( const unsigned char * datum );
+unsigned long HashPJW64 ( const unsigned char * datum );
 
 #endif

@@ -20,7 +20,7 @@
 #include <limits.h>
 
 
-unsigned int RSHash(const char* str, unsigned int len)
+unsigned int RSHash(const unsigned char* str, unsigned int len)
 {
    unsigned int b    = 378551;
    unsigned int a    = 63689;
@@ -38,7 +38,7 @@ unsigned int RSHash(const char* str, unsigned int len)
 /* End Of RS Hash Function */
 
 
-unsigned int JSHash(const char* str, unsigned int len)
+unsigned int JSHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 1315423911;
    unsigned int i    = 0;
@@ -53,7 +53,7 @@ unsigned int JSHash(const char* str, unsigned int len)
 /* End Of JS Hash Function */
 
 
-unsigned int PJWHash(const char* str, unsigned int len)
+unsigned int PJWHash(const unsigned char* str, unsigned int len)
 {
    const unsigned int BitsInUnsignedInt = (unsigned int)(sizeof(unsigned int) * 8);
    const unsigned int ThreeQuarters     = (unsigned int)((BitsInUnsignedInt  * 3) / 4);
@@ -78,7 +78,7 @@ unsigned int PJWHash(const char* str, unsigned int len)
 /* End Of  P. J. Weinberger Hash Function */
 
 // 64-bit variant of PJWHash
-unsigned long PJWHash64(const char* str, unsigned int len)
+unsigned long PJWHash64(const unsigned char* str, unsigned int len)
 {
   const unsigned long BitsInUnsignedLong = (unsigned long)(sizeof(unsigned long) * 8);
   const unsigned long ThreeQuarters      = (unsigned long)((BitsInUnsignedLong  * 3) / 4);
@@ -106,7 +106,7 @@ unsigned long PJWHash64(const char* str, unsigned int len)
 #define THREE_QUARTERS  ((int) ((BITS_IN_int * 3) / 4))
 #define ONE_EIGHTH      ((int) (BITS_IN_int / 8))
 #define HIGH_BITS       ( ~((unsigned int)(~0) >> ONE_EIGHTH ))
-unsigned int HashPJW ( const char * datum )
+unsigned int HashPJW ( const unsigned char * datum )
 {
     unsigned int hash_value, i;
     for ( hash_value = 0; *datum; ++datum )
@@ -125,7 +125,7 @@ unsigned int HashPJW ( const char * datum )
 #define THREE_QUARTERS_LONG  ((int) ((BITS_IN_long * 3) / 4))
 #define ONE_EIGHTH_LONG      ((int) (BITS_IN_long / 8))
 #define HIGH_BITS_LONG       ( ~((unsigned long)(~0L) >> ONE_EIGHTH_LONG ))
-unsigned long HashPJW64 ( const char * datum )
+unsigned long HashPJW64 ( const unsigned char * datum )
 {
     unsigned long hash_value, i;
     for ( hash_value = 0; *datum; ++datum )
@@ -140,7 +140,7 @@ unsigned long HashPJW64 ( const char * datum )
 }
 
 
-unsigned int ELFHash(const char* str, unsigned int len)
+unsigned int ELFHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 0;
    unsigned int x    = 0;
@@ -161,7 +161,7 @@ unsigned int ELFHash(const char* str, unsigned int len)
 /* End Of ELF Hash Function */
 
 
-unsigned int BKDRHash(const char* str, unsigned int len)
+unsigned int BKDRHash(const unsigned char* str, unsigned int len)
 {
    unsigned int seed = 131; /* 31 131 1313 13131 131313 etc.. */
    unsigned int hash = 0;
@@ -177,7 +177,7 @@ unsigned int BKDRHash(const char* str, unsigned int len)
 /* End Of BKDR Hash Function */
 
 
-unsigned int SDBMHash(const char* str, unsigned int len)
+unsigned int SDBMHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 0;
    unsigned int i    = 0;
@@ -192,7 +192,7 @@ unsigned int SDBMHash(const char* str, unsigned int len)
 /* End Of SDBM Hash Function */
 
 
-unsigned int DJBHash(const char* str, unsigned int len)
+unsigned int DJBHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 5381;
    unsigned int i    = 0;
@@ -207,7 +207,7 @@ unsigned int DJBHash(const char* str, unsigned int len)
 /* End Of DJB Hash Function */
 
 
-unsigned int DEKHash(const char* str, unsigned int len)
+unsigned int DEKHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = len;
    unsigned int i    = 0;
@@ -221,7 +221,7 @@ unsigned int DEKHash(const char* str, unsigned int len)
 /* End Of DEK Hash Function */
 
 
-unsigned int BPHash(const char* str, unsigned int len)
+unsigned int BPHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 0;
    unsigned int i    = 0;
@@ -235,7 +235,7 @@ unsigned int BPHash(const char* str, unsigned int len)
 /* End Of BP Hash Function */
 
 
-unsigned int FNVHash(const char* str, unsigned int len)
+unsigned int FNVHash(const unsigned char* str, unsigned int len)
 {
    const unsigned int fnv_prime = 0x811C9DC5;
    unsigned int hash      = 0;
@@ -252,7 +252,7 @@ unsigned int FNVHash(const char* str, unsigned int len)
 /* End Of FNV Hash Function */
 
 
-unsigned int APHash(const char* str, unsigned int len)
+unsigned int APHash(const unsigned char* str, unsigned int len)
 {
    unsigned int hash = 0xAAAAAAAA;
    unsigned int i    = 0;
